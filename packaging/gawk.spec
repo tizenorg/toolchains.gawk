@@ -15,6 +15,7 @@ License:    GPLv2+
 URL:        http://www.gnu.org/software/gawk/gawk.html
 Source0:    ftp://ftp.gnu.org/gnu/gawk/gawk-%{version}.tar.bz2
 Source100:  gawk.yaml
+Source1001: packaging/gawk.manifest 
 Patch0:     gawk-3.1.3-getpgrp_void.patch
 Patch1:     gawk-3.1.5-free.patch
 Patch2:     gawk-3.1.5-fieldwidths.patch
@@ -74,6 +75,7 @@ considered to be a standard Linux tool for processing text.
 # << setup
 
 %build
+cp %{SOURCE1001} .
 # >> build pre
 # << build pre
 
@@ -106,6 +108,7 @@ popd
 
 
 %files -f gawk.lang
+%manifest gawk.manifest
 %defattr(-,root,root,-)
 # >> files
 %doc FUTURES LIMITATIONS NEWS POSIX.STD README README_d/README.multibyte README_d/README.tests
