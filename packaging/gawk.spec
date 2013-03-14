@@ -62,7 +62,10 @@ considered to be a standard Linux tool for processing text.
 %build
 cp %{SOURCE1001} .
 
-%configure --bindir=/bin --disable-nls
+%configure \
+        --bindir=/bin \
+        --disable-man \
+        --disable-nls
 
 make %{?_smp_mflags}
 
@@ -78,12 +81,11 @@ popd
 
 %remove_docs
 
-%files 
+%files
 %manifest gawk.manifest
 %doc COPYING
 /bin/*
+%exclude /bin/pgawk*
 %{_bindir}/*
 %{_libexecdir}/awk
 %{_datadir}/awk
-
-
