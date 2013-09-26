@@ -79,11 +79,15 @@ ln -s ../../bin/gawk awk
 ln -s ../../bin/gawk gawk
 popd
 
+mkdir -p %{buildroot}/usr/share/license
+cp COPYING %{buildroot}/usr/share/license/%{name}
+
 %remove_docs
 
 %files
 %manifest gawk.manifest
 %doc COPYING
+/usr/share/license/%{name}
 /bin/*
 %exclude /bin/pgawk*
 %{_bindir}/*
